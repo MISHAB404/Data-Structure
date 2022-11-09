@@ -47,11 +47,14 @@ int searchq(int item)
 }
 
 //---------------fuction for deleting---------------//
-int deleteq()
+int deleteq(int * flag)
 {
   if(rear==front)
+{
+   * flag = 0;
    printf(" \n queue is empty");
-  else
+ } else
+   * flag = 1;
    front=(front+1)%SIZE;
   return q[front];
 }
@@ -59,7 +62,7 @@ int deleteq()
 //-----------------Main Function-------------------//
 void main()
 {
-  int item,opt,ans;
+  int item,opt,ans, flag;
    do {
       printf("\n 1. Insert \n 2. Search \n 3. Delete \n 4. Exit \n");
       printf("\n ---- Enter Option : ");
@@ -80,8 +83,8 @@ void main()
 	        printf("\n Item Founded At %d Postion \n", ans);
 	       break;
 
-      case 3 : item = deleteq(item);
-	       if(item == 1);
+      case 3 : item = deleteq(&flag);
+	       if(flag!= 0 )
 	        printf("\n Deleted : %d", item);
 	       break;
       case 4 : exit(0);
@@ -89,8 +92,3 @@ void main()
      }
  while(1);
 }
-
-
-
-
-
