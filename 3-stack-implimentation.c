@@ -43,11 +43,13 @@ int pop(int *status)
 // function for searching operaton
 int search(int item)
 {
+  int count=0;
   struct node * t = sp;
    while(t!=(struct node *)0)
     {
+   ++count;
      if(t->data==item)
-      return 1;
+      return count;
      t=t->next;
     } 
    return 0;
@@ -69,10 +71,12 @@ void main()
 	       scanf("%d", &item);
                push(item);
 	       break;	
+
       case 2 : item = pop(&status);
                if(status!=0)
 	       printf("\n ------Deleted %d \n", item);
 	       break;
+
       case 3 : printf("\n Enter Number To Search : ");
                scanf("%d", &item);
 	       ans = search(item);
@@ -81,11 +85,11 @@ void main()
                 else 
                   printf("\n ---Item Founded At %d Postion---\n", ans);
                break;
+
       case 4 : exit(0);
      }
     }
 while(1);
 }
-
 
 
